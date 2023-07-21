@@ -1,0 +1,19 @@
+void main() {
+  List<int> a = [5, 10, 15, 20, 25];
+  List<int> result = getFirstAndLastElements(a);
+
+  print("Original List: $a");
+  print("Result List: $result");
+}
+
+List<int> getFirstAndLastElements(List<int> list) {
+  List<int> result = [];
+  if (list.isNotEmpty) {
+    result.add(list.first); // Add the first element
+    if (list.length > 1) {
+      result.add(list.last); // Add the last element if the list has more than one element
+    }
+  }
+  return result;
+}
+

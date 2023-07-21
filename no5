@@ -1,0 +1,11 @@
+void main() {
+  String userInput = "My name is HAPPY"; 
+  String reversedString = reverseWords(userInput);
+  print("Reversed String: $reversedString");
+}
+
+String reverseWords(String input) {
+  List<String> words = input.split(' ');
+  words = words.reversed.toList();
+  return words.join(' ');
+}

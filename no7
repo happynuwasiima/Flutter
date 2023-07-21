@@ -1,0 +1,38 @@
+import 'dart:convert';
+
+void main() {
+  String jsonData = '''
+  [
+    {"name": "John", "birthday": "2023-05-01"},
+    {"name": "Alice", "birthday": "2023-05-15"},
+    {"name": "Bob", "birthday": "2023-05-20"},
+    {"name": "Eve", "birthday": "2023-11-10"},
+    {"name": "Tom", "birthday": "2023-11-25"},
+    {"name": "Lucy", "birthday": "2023-12-03"},
+    {"name": "Mike", "birthday": "2023-12-12"},
+    {"name": "Kate", "birthday": "2023-12-27"}
+  ]
+  ''';
+
+  List<Map<String, dynamic>> birthdaysList = jsonDecode(jsonData);
+  Map<String, int> birthdayCounts = countBirthdaysByMonth(birthdaysList);
+
+  print("Birthdays by Month:");
+  print(birthdayCounts);
+}
+
+Map<String, int> countBirthdaysByMonth(List<Map<String, dynamic>> birthdaysList) {
+  Map<String, int> birthdayCounts = {};
+
+  for (Map<String, dynamic> birthday in birthdaysList) {
+    String birthMonth = DateTime.parse(birthday['birthday']).month.toString();
+
+    if (birthdayCounts.containsKey(birthMonth)) {
+      birthdayCounts[birthMonth] += 1;
+    } else {
+      birthdayCounts[birthMonth] = 1;
+    }
+  }
+
+  return birthdayCounts;
+}

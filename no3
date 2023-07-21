@@ -1,0 +1,15 @@
+
+void main() {
+  String inputString = "mum"; // Replace this with your input string
+
+  if (isPalindrome(inputString)) {
+    print("$inputString is a palindrome.");
+  } else {
+    print("$inputString is not a palindrome.");
+  }
+}
+
+bool isPalindrome(String str) {
+  String reversedString = str.split('').reversed.join();
+  return str == reversedString;
+}
